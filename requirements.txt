@@ -1,0 +1,5 @@
+opencv-python-headless
+firebase_admin
+streamlit_extras
+streamlit_javascript
+st-click-detector

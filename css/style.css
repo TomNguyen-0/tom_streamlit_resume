@@ -1,0 +1,70 @@
+:root{
+    --page-width:900px;
+    --page-height:1700px;
+    --profile-height:200px;
+    --profile-width:200px;
+    --resume-title-height:150px;
+    --left-box-width:235px;
+    --right-box-width:500px;
+}
+
+
+.active{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.under-construction{
+    text-align: center;
+    background-color: #111;
+    padding: 3rem 0;
+}
+.underRow1{
+    color:#f2f2f2;
+    font-weight: bold;
+    font-size:3rem;
+    text-transform:uppercase;
+}
+.underRow1 span{
+    color:gold;
+}
+.underRow2{
+    font-weight: bold;
+    font-size:1.7rem;
+    color: gold;
+    text-transform:uppercase;
+}
+.underRow3{
+    font-weight: bold;
+    font-size:0.9rem;
+    color: #f2f2f2;
+    text-transform:uppercase;
+}
+.navbar-toggler{
+    margin-left: auto;
+}
+
+@media(max-width:991px){
+    .nav-link{
+        text-align: center;
+    }
+}
+.debug{
+    border: 1px red solid;
+}
+
+
+.header-title{
+    margin: 1px 1px 0 1px;
+    background-image: url(../img/laptop-bg.jfif);
+    height: 350px;
+}
+.header-title h1{
+    color:#f2f2f2;
+    text-align: center;
+    -webkit-text-stroke: 2px rgb(98, 177, 190);
+    font-size:5rem;
+    font-weight: bold;
+    width: fit-content;
+    margin:0 auto;
+}
