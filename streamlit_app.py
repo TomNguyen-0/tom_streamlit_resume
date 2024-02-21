@@ -11,10 +11,6 @@ TABLE_NAME = 'resume'
 DATABASE_URL = 'https://tomresume2024-default-rtdb.firebaseio.com'
 TOKEN_FILE_NAME = 'token.json'
 
-# [2]: https://discuss.streamlit.io/t/running-function-just-once-and-store/26515
-# [3]: https://docs.streamlit.io/library/api-reference/personalization/st.experimental_user
-
-
 # # Use a service account.
 # ## step 1 initializing to the database
 # @st.experimental_singleton #[2]
@@ -33,10 +29,7 @@ def write_to_db():
 
     try:
         app = firebase_admin.initialize_app(cred, {'databaseURL': DATABASE_URL})
-        # st.write('firebase initialized')
     except ValueError as e:
-        # firebase already initialized
-        # st.write('firebase already initialized')
         pass    
     ref = db.reference(TABLE_NAME)
     if user_dict.get("email", None) is not None:    
@@ -53,26 +46,3 @@ def write_to_db():
 
 
 write_db = write_to_db()
-
-
-# print(ref.get())
-# st.write(ref.get())
-
-
-# tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
-
-# with tab1:
-#    st.header("A cat")
-#    st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
-
-# with tab2:
-#    st.header("A dog")
-#    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-
-# with tab3:
-#    st.header("An owl")
-#    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
-
-
-

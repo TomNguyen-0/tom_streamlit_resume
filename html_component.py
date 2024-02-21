@@ -6,12 +6,6 @@ date                name           comment
 
 
 """
-# [1]: https://discuss.streamlit.io/t/include-an-existing-html-file-in-streamlit-app/5655/9
-# [4]: https://discuss.streamlit.io/t/how-do-i-use-a-background-image-on-streamlit/5067/5
-# [5]: https://discuss.streamlit.io/t/check-if-the-app-is-in-dark-mode-or-light-mode-at-runtime/20222/8
-# [6]: https://stackoverflow.com/questions/52371734/how-to-make-a-long-in-markdown-i-e-the-character
-# [7]: https://stackoverflow.com/questions/9743717/background-position-margin-top
-# [8]: https://discuss.streamlit.io/t/new-component-html-content-with-click-detection/23370
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -27,10 +21,6 @@ from st_click_detector import click_detector # [8]
 TITLE_OF_PAGE = "Tom's Resume"
 favicon = "img/tnV2.png"
 
-# >>> import plotly.express as px
-# >>> fig = px.box(range(10))
-# >>> fig.write_html('test.html')
-
 st.set_page_config(page_title=TITLE_OF_PAGE, 
                    page_icon = favicon, 
                    layout = 'centered', 
@@ -43,25 +33,8 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# def set_png_as_page_bg(png_file):
-#     bin_str = get_base64_of_bin_file(png_file)
-#     page_bg_img = '''
-#     <style>
-#     .body {
-#     background-image: url("data:image/jpg;base64,%s");
-#     background-size: cover;
-#     }
-#     </style>
-#     ''' % bin_str
-#     st.markdown(page_bg_img, unsafe_allow_html=True)
-#     return
 
-# set_png_as_page_bg('img/resume-background.jpg')
-
-# if "page_theme" not in st.session_state:
 st_theme = st_javascript("""window.getComputedStyle(window.parent.document.getElementsByClassName("stApp")[0]).getPropertyValue("color-scheme")""")
-# return_value = st_javascript("""function darkMode(i){return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)}(1)""")
-# st.write(return_value)
 st.session_state["page_theme"] = st_theme
 
 ## load javascript
@@ -70,8 +43,6 @@ temp="""    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/
 st.markdown('{}'.format(temp), unsafe_allow_html=True)
 
 def local_css(file_name):
-
-
     with open(file_name) as f:
         source_code = f.read()
         source_code = source_code.replace('\n', '')
@@ -104,7 +75,6 @@ def local_css(file_name):
         source_code = source_code.replace('var(--left-box-width)', f'{Variables.get_variables("left-box-width")}px')
         source_code = source_code.replace('var(--right-box-width)', f'{Variables.get_variables("right-box-width")}px')
 
-
         ## check if dark mode or light mode
         temp = str(int(Variables.get_variables("page-width"))+300)
         temp2 = str(int(Variables.get_variables("page-height")))
@@ -123,8 +93,6 @@ def local_css(file_name):
                 }}
             .right-form{{background-color: #dedede;}}
             .stApp{{color: #36454F;}}"""
-            # st.write(source_code)
-
         else: # [7]
             temp = str(int(Variables.get_variables("page-width"))+300)
             temp2 = str(int(Variables.get_variables("page-height")))
@@ -145,7 +113,6 @@ def local_css(file_name):
                 }}"""
 
         ## load css into markdown
-        
         st.markdown('<style>{}</style>'.format(source_code), unsafe_allow_html=True)
         
 
@@ -154,27 +121,11 @@ def local_css(file_name):
 local_css("css/resume.css")
 local_css("css/style.css")
 
-
-## javascript
-# with open('js/resume.js', 'r') as f:
-#     source_code = f.read()
-#     source_code = source_code.replace('\n', '')
-#     st.write(source_code)
-#     st.markdown('<script>{}</script>'.format(source_code), unsafe_allow_html=True)
-
-
-
-
 ## load html
 with open('resume.html', 'r') as f:
     source_code = f.read()
     source_code = source_code.replace('\n', '')
     st.markdown(source_code, unsafe_allow_html=True)
-    # st.components.v1.html(source_code, height=2000, width=1000, scrolling=True)
-
-
-## on click detection [8]
-
 
 
 
