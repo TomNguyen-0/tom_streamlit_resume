@@ -1,9 +1,4 @@
-# https://docs.streamlit.io/library/api-reference/widgets/st.page_link
-
 import streamlit as st
-# import streamlit.components.v1 as components
-# from streamlit_javascript import st_javascript
-from components.write_to_firebase import log_company_type
 from streamlit.components.v1 import html
 
 
@@ -25,7 +20,6 @@ st.query_params["company"]= st.session_state["COMPANY_NAME"]
     
 col1, col2 = st.columns(2)
 
-# st.page_link("streamlit_app.py",label=":blue[Project] - :green[Javascript]", icon="🌎")
 company_name = st.session_state["COMPANY_NAME"]
 with col1:
     st.title("Projects")
@@ -76,20 +70,5 @@ with col1:
     st.page_link("https://tom-nguyen-cr.netlify.app/",label=":blue[Project] - :green[HTML]: Coffee Website", icon="📁")
     st.page_link("https://github.com/TomNguyen-FSDI/Coffee-Shop",label=":gray[GitHub] - :green[HTML]: Source Code", icon="🗄️")
     st.divider()
-# with col2:
-#     st.title("Source Code")
 
-user_dict = st.experimental_user.to_dict() #[3]
-if user_dict["email"] != "test@example.com":
-    from components.write_to_firebase import log_company_type
-    log_company_type("projects")
-
-
-# if st.link_button("Go to gallery", "https://streamlit.io/gallery"):
-#     # log_company_type("project_javascript")
-#     st.write("project - JavaScript")
-
-# if st.button("Page 2"):
-#     st.switch_page("https://tom-nguyen-fsdi-106-assignment04.netlify.app/")
-    
     
